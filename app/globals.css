@@ -1,0 +1,183 @@
+@import 'tailwindcss';
+@import 'tw-animate-css';
+
+@custom-variant dark (&:is(.dark *));
+
+:root {
+  /* Light mode colors - Professional & Modern */
+  --background: #ffffff;
+  --foreground: #0f172a;
+  --card: #f8fafc;
+  --card-foreground: #0f172a;
+  --popover: #ffffff;
+  --popover-foreground: #0f172a;
+  --primary: #2563eb;
+  --primary-foreground: #ffffff;
+  --secondary: #64748b;
+  --secondary-foreground: #ffffff;
+  --muted: #e2e8f0;
+  --muted-foreground: #64748b;
+  --accent: #06b6d4;
+  --accent-foreground: #ffffff;
+  --destructive: #ef4444;
+  --destructive-foreground: #ffffff;
+  --border: #e2e8f0;
+  --input: #e2e8f0;
+  --ring: #2563eb;
+  --radius: 0.625rem;
+}
+
+.dark {
+  /* Dark mode colors - Deep & Premium */
+  --background: #0f172a;
+  --foreground: #f1f5f9;
+  --card: #1e293b;
+  --card-foreground: #f1f5f9;
+  --popover: #1e293b;
+  --popover-foreground: #f1f5f9;
+  --primary: #3b82f6;
+  --primary-foreground: #0f172a;
+  --secondary: #94a3b8;
+  --secondary-foreground: #0f172a;
+  --muted: #334155;
+  --muted-foreground: #cbd5e1;
+  --accent: #06b6d4;
+  --accent-foreground: #0f172a;
+  --destructive: #f87171;
+  --destructive-foreground: #0f172a;
+  --border: #334155;
+  --input: #1e293b;
+  --ring: #3b82f6;
+}
+
+@theme inline {
+  --font-sans: 'Geist', system-ui, -apple-system, sans-serif;
+  --font-mono: 'Geist Mono', monospace;
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  html {
+    scroll-behavior: smooth;
+  }
+  body {
+    @apply bg-background text-foreground;
+    font-feature-settings: 'rlig' 1, 'calt' 1;
+  }
+}
+
+@layer utilities {
+  .glass {
+    @apply bg-white/10 backdrop-blur-md border border-white/20;
+  }
+
+  .dark .glass {
+    @apply bg-white/5 backdrop-blur-md border border-white/10;
+  }
+
+  .gradient-text {
+    @apply bg-gradient-to-r from-primary via-accent to-primary bg-clip-text text-transparent;
+  }
+
+  .section-title {
+    @apply text-3xl md:text-4xl font-bold text-foreground;
+  }
+
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+
+  @keyframes slideInLeft {
+    from {
+      opacity: 0;
+      transform: translateX(-20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+
+  @keyframes slideInUp {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes slideInDown {
+    from {
+      opacity: 0;
+      transform: translateY(-20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes scaleIn {
+    from {
+      opacity: 0;
+      transform: scale(0.95);
+    }
+    to {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+
+  .animate-fadeIn {
+    animation: fadeIn 0.6s ease-out forwards;
+  }
+
+  .animate-slideInLeft {
+    animation: slideInLeft 0.6s ease-out forwards;
+  }
+
+  .animate-slideInUp {
+    animation: slideInUp 0.6s ease-out forwards;
+  }
+
+  .animate-slideInDown {
+    animation: slideInDown 0.6s ease-out forwards;
+  }
+
+  .animate-scaleIn {
+    animation: scaleIn 0.6s ease-out forwards;
+  }
+}
